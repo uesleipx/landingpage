@@ -1,125 +1,50 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Quiz Especial para Conteúdos Exclusivos</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-image: url('https://i.ibb.co/yFSBGGt/fundo-quiz.jpg'); /* Imagem de fundo */
-      background-size: cover;
-      background-position: center;
-      color: #fff;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
-    }
-    #quizContainer {
-      max-width: 500px;
-      padding: 30px;
-      background: rgba(0, 0, 0, 0.7);
-      border-radius: 12px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.5);
-      text-align: center;
-    }
-    h1 { font-size: 2em; color: #ffcc00; }
-    p { font-size: 1.5em; color: #00ffcc; }
-    button {
-      margin-top: 20px;
-      padding: 15px 25px;
-      font-size: 1.2em;
-      border: none;
-      border-radius: 8px;
-      background: #ff0066;
-      color: #fff;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
-    button:hover { background: #ff3385; }
-    .question { display: none; margin-top: 25px; }
-    .active { display: block; }
-    .finalMessage { display: none; font-weight: bold; }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Interativo</title>
+    <style>
+        body {
+            background-image: url('https://i.ibb.co/KDpCh3V/your-background-image.jpg');
+            background-size: cover;
+            color: #fff;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+        }
+        h1, h2 {
+            text-align: center;
+        }
+        .question {
+            margin-bottom: 20px;
+        }
+        .options label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        .cta-button {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background-color: #ff6f61;
+            color: white;
+            text-align: center;
+            font-size: 1.2em;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+        .cta-button:hover {
+            background-color: #ff3b2d;
+        }
+    </style>
 </head>
 <body>
-
-<div id="quizContainer">
-  <h1>Quiz para Conhecedores do Prazer</h1>
-  
-  <!-- Pergunta 1 -->
-  <div id="question1" class="question active">
-    <p>Qual o seu nome, delícia?</p>
-    <input type="text" id="username" placeholder="Digite seu nome aqui" />
-    <button onclick="nextQuestion('question2')">Próximo</button>
-  </div>
-
-  <!-- Pergunta 2 -->
-  <div id="question2" class="question">
-    <p>Se você pudesse escolher, preferiria um toque suave ou intenso?</p>
-    <button onclick="nextQuestion('question3')">Suave</button>
-    <button onclick="nextQuestion('question3')">Intenso</button>
-  </div>
-
-  <div id="question3" class="question">
-    <p>Qual parte do corpo você acha mais irresistível?</p>
-    <button onclick="nextQuestion('question4')">Lábios</button>
-    <button onclick="nextQuestion('question4')">Olhos</button>
-    <button onclick="nextQuestion('question4')">Mãos</button>
-  </div>
-
-  <div id="question4" class="question">
-    <p>Você prefere provocar ou ser provocado(a)?</p>
-    <button onclick="nextQuestion('question5')">Provocar</button>
-    <button onclick="nextQuestion('question5')">Ser Provocado(a)</button>
-  </div>
-
-  <div id="question5" class="question">
-    <p>Prefere algo que te surpreenda ou algo que já sabe que vai gostar?</p>
-    <button onclick="nextQuestion('question6')">Surpresa</button>
-    <button onclick="nextQuestion('question6')">Gostar</button>
-  </div>
-
-  <div id="question6" class="question">
-    <p>Qual o clima ideal para uma noite inesquecível?</p>
-    <button onclick="nextQuestion('question7')">Chuvoso</button>
-    <button onclick="nextQuestion('question7')">Ensolarado</button>
-    <button onclick="nextQuestion('question7')">À luz de velas</button>
-  </div>
-
-  <!-- Continue adicionando perguntas até a pergunta 19 -->
-
-  <div id="question19" class="question">
-    <p>Está pronto(a) para algo inesquecível?</p>
-    <button onclick="nextQuestion('finalMessage')">Sim, quero mais</button>
-    <button onclick="nextQuestion('finalMessage')">Surpreenda-me</button>
-  </div>
-
-  <!-- Mensagem Final com chamada para ação -->
-  <div id="finalMessage" class="finalMessage">
-    <p>Parabéns, <span id="userNameDisplay"></span>! Você está pronto(a) para um nível de prazer exclusivo.</p>
-    <p><strong>Acesse agora nosso conteúdo e aproveite uma experiência única.</strong></p>
-    <button onclick="window.location.href='https://go.tribopay.com.br/opp8f'">Sim, quero acessar o conteúdo!</button>
-  </div>
-</div>
-
-<script>
-  function nextQuestion(nextId) {
-    // Oculta todas as perguntas
-    document.querySelectorAll('.question').forEach(q => q.classList.remove('active'));
-
-    // Mostra a próxima pergunta
-    document.getElementById(nextId).classList.add('active');
-    
-    // Exibe o nome do usuário na mensagem final
-    if (nextId === 'finalMessage') {
-      const username = document.getElementById('username').value || 'Convidado';
-      document.getElementById('userNameDisplay').textContent = username;
-    }
-  }
-</script>
-
-</body>
-</html>
+    <div class="
